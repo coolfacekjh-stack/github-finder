@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 a {
@@ -85,6 +86,7 @@ ul {
   border-radius: 6px;
   padding: 28px 28px 24px;
   margin-bottom: 24px;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .search-section__heading {
@@ -107,7 +109,7 @@ ul {
   border-radius: 4px;
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background 0.3s, color 0.3s;
 }
 
 .search-input:focus {
@@ -128,6 +130,36 @@ ul {
   font-weight: 600;
 }
 
+/* ===========================================
+   🌀 로딩 스피너
+   =========================================== */
+.spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  gap: 16px;
+}
+
+.spinner__circle {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e0e0;
+  border-top-color: #4a90d9;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner__text {
+  font-size: 0.95rem;
+  color: #888;
+}
+
 /* ---------- 프로필 카드 ---------- */
 .profile-card {
   background: #fff;
@@ -136,10 +168,10 @@ ul {
   padding: 24px;
   display: flex;
   gap: 28px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  transition: background 0.3s, border-color 0.3s;
 }
 
-/* 왼쪽: 아바타 + 버튼 */
 .profile-card__left {
   display: flex;
   flex-direction: column;
@@ -156,7 +188,6 @@ ul {
   display: block;
 }
 
-/* 오른쪽 */
 .profile-card__right {
   flex: 1;
   display: flex;
@@ -181,15 +212,16 @@ ul {
   font-weight: 500;
 }
 
-.badge--blue   { background-color: #4a90d9; }
-.badge--gray   { background-color: #95a5a6; }
-.badge--green  { background-color: #27ae60; }
+.badge--blue  { background-color: #4a90d9; }
+.badge--gray  { background-color: #95a5a6; }
+.badge--green { background-color: #27ae60; }
 
 /* ---------- 프로필 상세 정보 ---------- */
 .profile-details {
   border: 1px solid #e8e8e8;
   border-radius: 4px;
   overflow: hidden;
+  transition: border-color 0.3s;
 }
 
 .profile-details__item {
@@ -197,6 +229,7 @@ ul {
   font-size: 0.95rem;
   border-bottom: 1px solid #e8e8e8;
   color: #444;
+  transition: border-color 0.3s, color 0.3s;
 }
 
 .profile-details__item:last-child {
@@ -227,6 +260,90 @@ ul {
   color: #fff;
 }
 
+/* ===========================================
+   🌿 잔디밭 (Contribution Garden)
+   =========================================== */
+.garden-section {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.garden-section__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.garden-section__period {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888;
+}
+
+/* 잔디밭 그리드: 주(column) × 요일(row) */
+.garden-grid {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+/* 한 주(7일)를 세로로 쌓는 컬럼 */
+.garden-week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* 각 날짜 셀 */
+.garden-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  cursor: default;
+  transition: transform 0.1s;
+}
+
+.garden-cell:hover {
+  transform: scale(1.4);
+}
+
+/* 활동 레벨별 색상 */
+.garden-cell[data-level="0"] { background-color: #ebedf0; }
+.garden-cell[data-level="1"] { background-color: #9be9a8; }
+.garden-cell[data-level="2"] { background-color: #40c463; }
+.garden-cell[data-level="3"] { background-color: #30a14e; }
+.garden-cell[data-level="4"] { background-color: #216e39; }
+
+/* 범례 */
+.garden-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.legend-label {
+  margin: 0 2px;
+}
+
+.legend-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  cursor: default;
+}
+
 /* ---------- 저장소 섹션 ---------- */
 .repos-section {
   margin-bottom: 32px;
@@ -245,6 +362,7 @@ ul {
   border-radius: 6px;
   background: #fff;
   overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .repo-item {
@@ -254,6 +372,7 @@ ul {
   padding: 14px 20px;
   border-bottom: 1px solid #e8e8e8;
   gap: 12px;
+  transition: border-color 0.3s;
 }
 
 .repo-item:last-child {
@@ -276,7 +395,7 @@ ul {
   flex-shrink: 0;
 }
 
-/* 저장소 행 뱃지 고정 너비 */
+/* 저장소 뱃지 고정 너비 */
 .repo-item__badges .badge {
   flex: 0 0 130px;
   width: 130px;
@@ -292,123 +411,42 @@ ul {
   font-size: 0.9rem;
   border-top: 1px solid #e0e0e0;
   background: #fff;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 /* ==============================================
-   🌙 다크 모드 - body에 .dark 클래스가 붙으면 적용
+   🌙 다크 모드
    ============================================== */
-
-body.dark {
-  background-color: #1a1a2e;
-  color: #e0e0e0;
-}
-
-body.dark a {
-  color: #7eb8f7;
-}
-
-/* 헤더 */
-body.dark .header {
-  background-color: #0f3460;
-}
-
-/* 검색 섹션 */
-body.dark .search-section {
-  background: #16213e;
-  border-color: #2a2a4a;
-}
-
-body.dark .search-section__heading {
-  color: #e0e0e0;
-}
-
-body.dark .search-section__sub {
-  color: #8899aa;
-}
-
-body.dark .search-input {
-  background: #1e2a40;
-  border-color: #2a2a4a;
-  color: #e0e0e0;
-}
-
-body.dark .search-input:focus {
-  border-color: #7eb8f7;
-}
-
-body.dark .search-input::placeholder {
-  color: #556677;
-}
-
-/* 상태 메시지 */
-body.dark .status-message {
-  color: #8899aa;
-}
-
-/* 프로필 카드 */
-body.dark .profile-card {
-  background: #16213e;
-  border-color: #2a2a4a;
-}
-
-/* 프로필 상세 정보 */
-body.dark .profile-details {
-  border-color: #2a2a4a;
-}
-
-body.dark .profile-details__item {
-  border-bottom-color: #2a2a4a;
-  color: #c0c8d8;
-}
-
-/* 저장소 섹션 */
-body.dark .repos-section__title {
-  color: #e0e0e0;
-}
-
-body.dark .repos-list {
-  background: #16213e;
-  border-color: #2a2a4a;
-}
-
-body.dark .repo-item {
-  border-bottom-color: #2a2a4a;
-}
-
-body.dark .repo-item__name a {
-  color: #7eb8f7;
-}
-
-/* 푸터 */
-body.dark .footer {
-  background: #16213e;
-  border-top-color: #2a2a4a;
-  color: #556677;
-}
-
-/* 다크모드에서 토글 버튼 배경 */
-body.dark .dark-toggle {
-  background: rgba(255, 255, 255, 0.15);
-}
+body.dark { background-color: #1a1a2e; color: #e0e0e0; }
+body.dark a { color: #7eb8f7; }
+body.dark .header { background-color: #0f3460; }
+body.dark .search-section { background: #16213e; border-color: #2a2a4a; }
+body.dark .search-section__heading { color: #e0e0e0; }
+body.dark .search-section__sub { color: #8899aa; }
+body.dark .search-input { background: #1e2a40; border-color: #2a2a4a; color: #e0e0e0; }
+body.dark .search-input:focus { border-color: #7eb8f7; }
+body.dark .search-input::placeholder { color: #556677; }
+body.dark .status-message { color: #8899aa; }
+body.dark .spinner__circle { border-color: #2a2a4a; border-top-color: #7eb8f7; }
+body.dark .spinner__text { color: #8899aa; }
+body.dark .profile-card { background: #16213e; border-color: #2a2a4a; }
+body.dark .profile-details { border-color: #2a2a4a; }
+body.dark .profile-details__item { border-bottom-color: #2a2a4a; color: #c0c8d8; }
+body.dark .garden-section { background: #16213e; border-color: #2a2a4a; }
+body.dark .garden-section__title { color: #e0e0e0; }
+body.dark .garden-cell[data-level="0"] { background-color: #2d333b; }
+body.dark .repos-section__title { color: #e0e0e0; }
+body.dark .repos-list { background: #16213e; border-color: #2a2a4a; }
+body.dark .repo-item { border-bottom-color: #2a2a4a; }
+body.dark .repo-item__name a { color: #7eb8f7; }
+body.dark .footer { background: #16213e; border-top-color: #2a2a4a; color: #556677; }
+body.dark .dark-toggle { background: rgba(255,255,255,0.15); }
 
 /* ---------- 반응형 ---------- */
 @media (max-width: 600px) {
-  .profile-card {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .profile-card__avatar {
-    width: 160px;
-    height: 160px;
-  }
-
-  .btn {
-    width: 160px;
-  }
-
-  .repo-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  .profile-card { flex-direction: column; align-items: center; }
+  .profile-card__avatar { width: 160px; height: 160px; }
+  .btn { width: 160px; }
+  .repo-item { flex-direction: column; align-items: flex-start; }
+  .repo-item__badges .badge { flex: 0 0 110px; width: 110px; }
 }

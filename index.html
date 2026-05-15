@@ -32,10 +32,16 @@
         </form>
       </section>
 
-      <!-- 상태 메시지 (로딩 / 에러 안내) -->
+      <!-- 상태 메시지 (에러 안내) -->
       <div id="status-message" class="status-message"></div>
 
-      <!-- 프로필 + 저장소 결과 영역 (기본 숨김) -->
+      <!-- ===== 로딩 스피너 (기본 숨김) ===== -->
+      <div id="spinner" class="spinner hidden" role="status" aria-label="로딩 중">
+        <div class="spinner__circle"></div>
+        <p class="spinner__text">검색 중입니다...</p>
+      </div>
+
+      <!-- 프로필 + 잔디밭 + 저장소 결과 영역 (기본 숨김) -->
       <div id="result-section" class="hidden">
 
         <!-- 프로필 카드 -->
@@ -91,8 +97,28 @@
               </li>
             </ul>
 
-          </div><!-- /profile-card__right -->
-        </section><!-- /profile-card -->
+          </div>
+        </section>
+
+        <!-- ===== 잔디밭 (Contribution Garden) ===== -->
+        <section id="garden-section" class="garden-section">
+          <h3 class="garden-section__title">
+            🌿 Contribution Garden
+            <span id="garden-period" class="garden-section__period"></span>
+          </h3>
+          <div id="garden-grid" class="garden-grid">
+            <!-- app.js에서 동적으로 생성 -->
+          </div>
+          <div class="garden-legend">
+            <span class="legend-label">Less</span>
+            <span class="garden-cell legend-cell" data-level="0"></span>
+            <span class="garden-cell legend-cell" data-level="1"></span>
+            <span class="garden-cell legend-cell" data-level="2"></span>
+            <span class="garden-cell legend-cell" data-level="3"></span>
+            <span class="garden-cell legend-cell" data-level="4"></span>
+            <span class="legend-label">More</span>
+          </div>
+        </section>
 
         <!-- 저장소 목록 -->
         <section id="repos-section" class="repos-section">
