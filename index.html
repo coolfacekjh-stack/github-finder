@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Finder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- ===== 헤더 ===== -->
+    <header class="header">
+      <h1 class="header__title">GitHub Finder</h1>
+      <button id="dark-toggle" class="dark-toggle" aria-label="다크모드 전환">🌙</button>
+    </header>
+
+    <!-- ===== 메인 ===== -->
+    <main class="container">
+
+      <!-- 검색 섹션 -->
+      <section class="search-section">
+        <h2 class="search-section__heading">Search GitHub Users</h2>
+        <p class="search-section__sub">Enter a username to fetch a user profile and repos</p>
+        <form id="search-form">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Enter username..."
+            autocomplete="off"
+          />
+        </form>
+      </section>
+
+      <!-- 상태 메시지 (로딩 / 에러 안내) -->
+      <div id="status-message" class="status-message"></div>
+
+      <!-- 프로필 + 저장소 결과 영역 (기본 숨김) -->
+      <div id="result-section" class="hidden">
+
+        <!-- 프로필 카드 -->
+        <section id="profile-section" class="profile-card">
+
+          <!-- 왼쪽: 아바타 + View Profile 버튼 -->
+          <div class="profile-card__left">
+            <img
+              id="profile-avatar"
+              class="profile-card__avatar"
+              src=""
+              alt="프로필 이미지"
+            />
+            <a
+              id="profile-github-link"
+              class="btn btn--primary"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Profile
+            </a>
+          </div>
+
+          <!-- 오른쪽: 통계 뱃지 + 상세 정보 -->
+          <div class="profile-card__right">
+
+            <!-- 통계 뱃지 -->
+            <div class="badge-group">
+              <span class="badge badge--blue">Public Repos: <strong id="stat-repos">0</strong></span>
+              <span class="badge badge--gray">Public Gists: <strong id="stat-gists">0</strong></span>
+              <span class="badge badge--green">Followers: <strong id="stat-followers">0</strong></span>
+              <span class="badge badge--green">Following: <strong id="stat-following">0</strong></span>
+            </div>
+
+            <!-- 상세 정보 -->
+            <ul class="profile-details">
+              <li class="profile-details__item">
+                <span>Company: </span>
+                <span id="profile-company">-</span>
+              </li>
+              <li class="profile-details__item">
+                <span>Website/Blog: </span>
+                <a id="profile-blog" href="#" target="_blank" rel="noopener noreferrer"></a>
+              </li>
+              <li class="profile-details__item">
+                <span>Location: </span>
+                <span id="profile-location">-</span>
+              </li>
+              <li class="profile-details__item">
+                <span>Member Since: </span>
+                <span id="profile-created">-</span>
+              </li>
+            </ul>
+
+          </div><!-- /profile-card__right -->
+        </section><!-- /profile-card -->
+
+        <!-- 저장소 목록 -->
+        <section id="repos-section" class="repos-section">
+          <h3 class="repos-section__title">Latest Repos</h3>
+          <ul id="repos-list" class="repos-list">
+            <!-- app.js 에서 동적으로 삽입 -->
+          </ul>
+        </section>
+
+      </div><!-- /result-section -->
+
+    </main>
+
+    <!-- ===== 푸터 ===== -->
+    <footer class="footer">
+      <p>GitHub Finder &copy;</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
